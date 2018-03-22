@@ -1,3 +1,6 @@
+from operator import itemgetter
+
+
 def poker(hands):
     """Return a list of winning hands: poker([hand,...]) => [hand,...]"""
     return allmax(hands, key=hand_rank)
@@ -86,3 +89,8 @@ def kind(n, ranks):
         if ranks.count(r) == n:
             return r
     return None
+
+
+def best_hand(hand):
+    """From a 7-card hand, return the best 5 card hand."""
+    raise NotImplementedError

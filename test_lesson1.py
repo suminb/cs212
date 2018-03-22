@@ -1,6 +1,6 @@
 import pytest
 
-from lesson1 import card_ranks, kind, poker, straight, two_pair
+from lesson1 import best_hand, card_ranks, kind, poker, straight, two_pair
 
 
 @pytest.fixture
@@ -47,3 +47,13 @@ def test_draw(fk, fh):
     sf1 = '6C 7C 8C 9C TC'.split()  # Straight Flush
     sf2 = '6D 7D 8D 9D TD'.split()  # Straight Flush
     assert poker([sf1, sf2, fk, fh]) == [sf1, sf2]
+
+
+@pytest.mark.skip
+def test_best_hand():
+    assert sorted(best_hand('6C 7C 8C 9C TC 5C JS'.split())) \
+        == ['6C', '7C', '8C', '9C', 'TC']
+    assert sorted(best_hand('TD TC TH 7C 7D 8C 8S'.split())) \
+        == ['8C', '8S', 'TC', 'TD', 'TH']
+    assert sorted(best_hand('JD TC TH 7C 7D 7S 7H'.split())) \
+        == ['7C', '7D', '7H', '7S', 'JD']
